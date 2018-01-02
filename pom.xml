@@ -6,7 +6,7 @@
 
     <groupId>me.artuto.discordwebhook</groupId>
     <artifactId>DiscordWebhook-Spigot</artifactId>
-    <version>DEV</version>
+    <version>1.0.0</version>
 
     <repositories>
         <repository>
