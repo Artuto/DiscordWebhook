@@ -22,7 +22,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.event.server.ServerCommandEvent;
+import org.bukkit.event.server.PluginDisableEvent;
 
 @SuppressWarnings("WeakerAccess")
 public class EventListener implements Listener
@@ -51,13 +51,16 @@ public class EventListener implements Listener
     @EventHandler
     public void onPluginEnable(PluginEnableEvent event)
     {
+        if(!(event.getPlugin().getName().equals("DiscordWebhook")))
+            return;
         Sender.startup(event.getPlugin().getServer(), config.getUrl());
     }
 
     @EventHandler
-    public void onServerCommand(ServerCommandEvent event)
+    public void onPluginDisable(PluginDisableEvent event)
     {
-        if(event.getCommand().equals("stop"))
+        if(!(event.getPlugin().getName().equals("DiscordWebhook")))
+            return;
             Sender.shutdown(event.getSender().getServer(), config.getUrl());
     }
 }
