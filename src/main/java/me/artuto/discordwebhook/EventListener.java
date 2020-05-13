@@ -61,6 +61,6 @@ public class EventListener implements Listener
     {
         if(!(event.getPlugin().getName().equals("DiscordWebhook")))
             return;
-            Sender.shutdown(event.getSender().getServer(), config.getUrl());
+            Sender.shutdown(event.getPlugin().getServer(), config.getUrl());
     }
 }
