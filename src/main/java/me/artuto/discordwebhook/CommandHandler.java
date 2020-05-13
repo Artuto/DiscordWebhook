@@ -26,26 +26,29 @@ public class CommandHandler implements CommandExecutor
     @Override
     public boolean onCommand(CommandSender executor, Command cmd, String label, String[] args)
     {
-        switch(cmd.getName().toLowerCase())
+        if (cmd.getName().toLowerCase().equals("webhook"))
         {
-            case "webhook":
-                if(args.length==0)
-                    executor.sendMessage(ChatColor.DARK_BLUE+"-====== Webhook Help ======-"+ChatColor.RESET +
-                            "\n/webhook about - Shows information about the plugin" +
-                            "\n/webhook help - Shows this message");
-                else if(args[0].equals("about"))
-                    executor.sendMessage("Plugin made by "+ChatColor.GREEN+"Artuto" +
-                            ChatColor.RESET+"\nPlugin Version: "+ChatColor.GREEN+Const.VERSION+ChatColor.RESET +
-                            "\nDonations are accepted! "+ChatColor.AQUA+"https://paypal.me/artuto");
-                else if(args[0].equals("help"))
-                    executor.sendMessage(ChatColor.DARK_BLUE+"-====== Webhook Help ======-"+ChatColor.RESET +
-                            "\n/webhook about - Shows information about the plugin" +
-                            "\n/webhook help - Shows this message");
-                break;
-            default:
-                return false;
+            if(args.length==0)
+            {
+                executor.sendMessage(ChatColor.DARK_BLUE+"-====== Webhook Help ======-"+ChatColor.RESET +
+                        "\n/webhook about - Shows information about the plugin" +
+                        "\n/webhook help - Shows this message");
+            }
+            else if(args[0].equals("about"))
+            {
+                executor.sendMessage("Plugin made by "+ChatColor.GREEN+"Artuto" +
+                        ChatColor.RESET+"\nPlugin Version: "+ChatColor.GREEN+Const.VERSION+ChatColor.RESET +
+                        "\nDonations are accepted! "+ChatColor.AQUA+"https://paypal.me/artuto");
+            }
+            else if(args[0].equals("help"))
+            {
+                executor.sendMessage(ChatColor.DARK_BLUE+"-====== Webhook Help ======-"+ChatColor.RESET +
+                        "\n/webhook about - Shows information about the plugin" +
+                        "\n/webhook help - Shows this message");
+            }
+            return true;
         }
 
-        return true;
+        return false;
     }
 }
